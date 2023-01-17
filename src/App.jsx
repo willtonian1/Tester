@@ -1,16 +1,26 @@
 import './App.css'
 
-export default function App() {
-	return (
-		<main>
-			<div id="background" src="src/background.png">
+import React, { useState, useEffect } from 'react';
 
-				<img id="logo" src="src/newlogo.png"></img>
+function ImageOnScroll() {
+  const [size, setSize] = useState({ width: 600, height: 900 });
 
-				<img id="overlay" src="src/overlay.png"></img>
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-			</div>
-		</main>
-	)
+  function handleScroll() {
+    const scrollY = window.scrollY;
+    setSize({ width: 600 - scrollY / 2, height: 900 - scrollY / 2 });
+  }
+
+  return (
+	  <main>
+    <img src="src/overlay.png" style={{ width: size.width, height: size.height }} alt="image" />
+	<div style={{ height: 10000 }}> </div>
+		  </main>
+  );
 }
- 
+
+export default ImageOnScroll;
