@@ -3,7 +3,7 @@ import './App.css'
 export default function App() {
 	return (
 		<main>
-			<div id="background">
+			<div id="background" src="src/background.png">
 
 				<img id="logo" src="src/newlogo.png"></img>
 
@@ -13,3 +13,4 @@ export default function App() {
 		</main>
 	)
 }
+ 
